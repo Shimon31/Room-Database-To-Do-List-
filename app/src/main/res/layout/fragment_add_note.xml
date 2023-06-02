@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="8dp"
+    tools:context=".AddNoteFragment">
+
+    <EditText
+        android:id="@+id/titleET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Whats on Your Mind?"/>
+
+    <Button
+        android:id="@+id/datePickerBTN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Pick a Date"
+        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+        android:layout_marginTop="30dp"/>
+
+    <Button
+        android:id="@+id/timePickerBTN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Pick a Time"
+        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+        android:layout_marginTop="30dp"/>
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:layout_margin="15dp"
+        android:id="@+id/prioritySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <Button
+        android:id="@+id/submitBTN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Submit"
+        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+        android:layout_marginTop="30dp"/>
+
+
+
+
+
+
+</LinearLayout>
