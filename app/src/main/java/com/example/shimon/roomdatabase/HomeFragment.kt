@@ -37,12 +37,14 @@ class HomeFragment : Fragment(), NoteAdapter.NoteEditListener, NoteAdapter.NoteD
 
         }
 
-
         binding.addNote.setOnClickListener {
 
+            val bundle = Bundle()
+            bundle.putInt("noteId", 0)
 
+            findNavController().navigate(R.id.action_homeFragment_to_addNoteFragment, bundle)
 
-           findNavController().navigate(R.id.action_homeFragment_to_addNoteFragment)
+            /*findNavController().navigate(R.id.action_homeFragment_to_addNoteFragment)*/
 
         }
 
@@ -50,12 +52,14 @@ class HomeFragment : Fragment(), NoteAdapter.NoteEditListener, NoteAdapter.NoteD
     }
 
     override fun onNoteEdit(note: Note) {
-        var bundle = Bundle()
-        bundle.putInt(AddNoteFragment.Note_Id, note.noteID)
 
 
+        val bundle = Bundle()
+        bundle.putInt("noteId", note.noteID)
 
         findNavController().navigate(R.id.action_homeFragment_to_addNoteFragment, bundle)
+
+
     }
 
     override fun onNoteDelete(note: Note) {

@@ -20,7 +20,7 @@ import java.util.Calendar
 class AddNoteFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
     lateinit var binding: FragmentAddNoteBinding
-    val priorityList = listOf("Select a priority", "High", "Medium", "Low")
+    private val priorityList = listOf("Select a priority", "High", "Medium", "Low")
 
     private var selectedDate: String? = null
     private var time: String? = null
@@ -32,7 +32,8 @@ class AddNoteFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
         var Note_Id = "noteId"
     }
-    lateinit var note : Note
+
+    lateinit var note: Note
 
 
     override fun onCreateView(
@@ -41,11 +42,13 @@ class AddNoteFragment : Fragment(), AdapterView.OnItemSelectedListener {
     ): View? {
         binding = FragmentAddNoteBinding.inflate(layoutInflater, container, false)
 
-        noteId = requireArguments().getInt(Note_Id)
+        noteId = requireArguments().getInt(Note_Id,0)
+        requireArguments()
 
         if (noteId != 0) {
-             note =
-                NoteDataBase.getDB(requireContext()).getNoteDao().getNoteById(listOf<Int>(noteId))[0]
+            note =
+                NoteDataBase.getDB(requireContext()).getNoteDao()
+                    .getNoteById(listOf<Int>(noteId))[0]
 
             binding.apply {
 
@@ -57,6 +60,10 @@ class AddNoteFragment : Fragment(), AdapterView.OnItemSelectedListener {
             }
 
         }
+
+
+
+
 
         var spinnerAdapter = ArrayAdapter(
             requireContext(),
@@ -89,11 +96,10 @@ class AddNoteFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
             if (noteId == 0) {
                 NoteDataBase.getDB(requireContext()).getNoteDao().insertNote(note)
-            }else
-            {
+            } else {
                 note.noteID = noteId
                 NoteDataBase.getDB(requireContext()).getNoteDao().updateNote(note)
-                }
+            }
 
         }
 
